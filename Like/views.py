@@ -11,6 +11,7 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from .models import *
+from django.http import HttpResponse
 from users.models import *
 from django.contrib import messages
 from django.utils.decorators import method_decorator
@@ -21,6 +22,8 @@ from paypal.standard.forms import PayPalPaymentsForm
 import uuid
 import random
 import string
+import requests
+
 
 import stripe
 # import Paystack
@@ -396,10 +399,15 @@ class PaymentView(View):
 		messages.warning(self.request, "Invalid data received")
 		return redirect("/payment/stripe/")
 
-
-def PaypalPayment(request,payment_option):
-	order = Order.objects.get(user=request.user, ordered=False)
+@login_required
+def PaypalPayment(request,payment_option,):
+	
+	if request.user.is_authenticated:
+		order = Order.objects.get(user=request.user, ordered=False)
+	else:
+		order = False
 	amount = order.get_total()
+	
 	
 	context = {
 		'order': order,
@@ -423,16 +431,18 @@ def PaypalPayment(request,payment_option):
 	return render(request,"paypal-page.html",context)
 
 
-def InvoicePayment(request,payment_option):
-	order = Order.objects.get(user=request.user, ordered=False)
-	amount = order.get_total()
-	
+def InvoicePayment(request):
+	if request.user.is_authenticated:
+		order = Order.objects.get(user=request.user, ordered=False)
+	else:
+		order = False
+	orderid = request.POST.get('orderid')
+	orderid = request.POST['orderid']
 	try:
-
 				# create the payment
 		payment = Payment()
-		payment.stripe_charge_id = charge['id']
-		payment.user = self.request.user
+		payment.paypal_order_id = orderid
+		payment.user = request.user
 		payment.amount = order.get_total()
 		payment.save()
 
@@ -446,12 +456,15 @@ def InvoicePayment(request,payment_option):
 		order.payment = payment
 		order.ref_code = create_ref_code()
 		order.save()
-
-		messages.success(self.request, "Your order was successful!")
-		return redirect("/")
+		response = "Your order was successful!"
+		return HttpResponse(response)
+		messages.success(request, "Your order was successful!")
+		# return redirect("/")
 
 	except stripe.error.CardError as e:
 		return redirect("/")
+	
+	amount = order.get_total()
 	if order.billing_address:
 		context = {
 			'order': order,
@@ -1000,11 +1013,14 @@ def list_category(request, slug):
 	return render(request, template, context)
 
 
-def about(request):
-	return render(request,'about.html')
+def about_us(request):
+	return render(request,'about-us.html')
 
 def contact(request):
-	order = Order.objects.get(user=request.user, ordered=False)
+	if request.user.is_authenticated:
+		order = Order.objects.get(user=self.request.user, ordered=False)
+	else:
+		order = False
 	if request.method == "POST":
 		name = request.POST.get("name")
 		email = request.POST.get("email")
@@ -1025,31 +1041,31 @@ def contact(request):
 		# return redirect('/login')
 	return render(request,'contact-us.html',{'order':order})
 
-@login_required
-def reservation(request):
-	if request.method == "POST":
-		name = request.POST.get("name")
-		email = request.POST.get("email")
-		phone = request.POST.get("phone")
-		date = request.POST.get("date")
-		time = request.POST.get("time")
-		person = request.POST.get("person")
-		massage = request.POST.get("massage")
-		instance = Reservation.objects.create(user=request.user,name=name, email=email,date=date,time=time,person=person, phone=phone,massage=massage)
-		instance.save()
-		template = render_to_string('users/signup_massage.html',{
-			"email": email
-		})
+# @login_required
+# def reservation(request):
+# 	if request.method == "POST":
+# 		name = request.POST.get("name")
+# 		email = request.POST.get("email")
+# 		phone = request.POST.get("phone")
+# 		date = request.POST.get("date")
+# 		time = request.POST.get("time")
+# 		person = request.POST.get("person")
+# 		massage = request.POST.get("massage")
+# 		instance = Reservation.objects.create(user=request.user,name=name, email=email,date=date,time=time,person=person, phone=phone,massage=massage)
+# 		instance.save()
+# 		template = render_to_string('users/signup_massage.html',{
+# 			"email": email
+# 		})
 			
-		send_mail('From chopilosbyslippery',
-		template,
-		settings.EMAIL_HOST_USER,
-		[email],
-		)
-		messages.success(request, f'Reservation Booked Successfully !')
+# 		send_mail('From chopilosbyslippery',
+# 		template,
+# 		settings.EMAIL_HOST_USER,
+# 		[email],
+# 		)
+# 		messages.success(request, f'Reservation Booked Successfully !')
 
-	res = Reservation.objects.filter(user=request.user).order_by('-timestamp')[:2]
-	return render(request,'reservation.html',{'res':res})
+# 	res = Reservation.objects.filter(user=request.user).order_by('-timestamp')[:2]
+# 	return render(request,'reservation.html',{'res':res})
 
 def shop(request):
 	if request.user.is_authenticated:
@@ -1068,7 +1084,10 @@ def sell_here(request):
 
 @login_required
 def ListItem(request):
-	order = Order.objects.get(user=request.user, ordered=False)
+	if request.user.is_authenticated:
+		order = Order.objects.get(user=self.request.user, ordered=False)
+	else:
+		order = False
 	vendors_list = BOUTIQUE_REQUEST.objects.filter(user=request.user).order_by('-id')
 	category_list = Category.objects.all().order_by('-id')
 	subcategory_list = Sub_Category.objects.all().order_by('-id')
@@ -1105,7 +1124,10 @@ def ListItem(request):
 
 @login_required
 def sell_form(request):
-	order = Order.objects.get(user=request.user, ordered=False)
+	if request.user.is_authenticated:
+		order = Order.objects.get(user=self.request.user, ordered=False)
+	else:
+		order = False
 	if request.method == "POST":
 		pod = BOUTIQUE_REQUEST()
 		pod.user=request.user
@@ -1143,9 +1165,14 @@ def sell_form(request):
 def successfully(request):
 	return render(request,"successful.html")
 
+def how_to_sell(request):
+    return render(request, 'how-to-sell.html')
 
 def vendors(request):
-	order = Order.objects.get(user=request.user, ordered=False)
+	if request.user.is_authenticated:
+		order = Order.objects.get(user=self.request.user, ordered=False)
+	else:
+		order = False
 	vendors_list = BOUTIQUE_REQUEST.objects.filter(approved=True).order_by('-id')
 	vendors_count = BOUTIQUE_REQUEST.objects.filter(approved=True)
 	# for i in vendors_count:
@@ -1155,7 +1182,10 @@ def vendors(request):
 	return render(request,"vendors.html",{'order':order,'vendors_list':vendors_list})
 
 def VendorDetailView(request, pk):
-	order = Order.objects.get(user=request.user, ordered=False)
+	if request.user.is_authenticated:
+		order = Order.objects.get(user=self.request.user, ordered=False)
+	else:
+		order = False
 	objects = get_object_or_404(BOUTIQUE_REQUEST, pk=pk)
 	# print(objects)
 	latest = Item.objects.filter(Boutique_name=objects).order_by('-timestamp')
@@ -1171,10 +1201,13 @@ def VendorDetailView(request, pk):
 	}
 	return render(request, 'vendor_details.html', context)
 
-def about(request):
-	order = Order.objects.get(user=request.user, ordered=False)
+def about_us(request):
+	if request.user.is_authenticated:
+		order = Order.objects.get(user=self.request.user, ordered=False)
+	else:
+		order = False
 	counters = counter.objects.all()
-	return render(request,"about.html",{'order':order,'counter':counters})
+	return render(request,"about-us.html",{'order':order,'counter':counters})
 
 
 def contact(request):
@@ -1182,9 +1215,11 @@ def contact(request):
 
 @login_required
 def Dashboard_sells(request):
-	vendors_list = BOUTIQUE_REQUEST.objects.filter(user=request.user).filter(approved=True).order_by('-id')[0:4]
-	vendors_list2 = BOUTIQUE_REQUEST.objects.filter(user=request.user).filter(approved=True).order_by('-id')[4:8]
-	vendors_list3 = BOUTIQUE_REQUEST.objects.filter(user=request.user).filter(approved=True).order_by('-id')[8:12]
+
+	BOUTIQUE_ = BOUTIQUE_REQUEST.objects.filter(user=request.user).filter(approved=True).order_by('-id')
+	vendors_list = BOUTIQUE_[0:4]
+	vendors_list2 = BOUTIQUE_[4:8]
+	vendors_list3 = BOUTIQUE_[8:12]
 	context = {
 		"vendors_list":vendors_list,
 		"vendors_list2":vendors_list2,
@@ -1200,9 +1235,10 @@ def Dashboard_sells_details(request,pk):
 
 
 def Dashboard_draft(request):
-	vendors_list = BOUTIQUE_REQUEST.objects.filter(user=request.user).filter(approved=False).order_by('-id')[0:4]
-	vendors_list2 = BOUTIQUE_REQUEST.objects.filter(user=request.user).filter(approved=False).order_by('-id')[4:8]
-	vendors_list3 = BOUTIQUE_REQUEST.objects.filter(user=request.user).filter(approved=False).order_by('-id')[8:12]
+	BOUTIQUE_ = BOUTIQUE_REQUEST.objects.filter(user=request.user).filter(approved=True).order_by('-id')
+	vendors_list = BOUTIQUE_[0:4]
+	vendors_list2 = BOUTIQUE_[4:8]
+	vendors_list3 = BOUTIQUE_[8:12]
 	context = {
 		"vendors_list":vendors_list,
 		"vendors_list2":vendors_list2,
@@ -1220,6 +1256,35 @@ def Dashboard_draft_details(request,pk):
 
 def Statics(request):
 	return render(request, "dashboard/statics.html")
+
+
+def payout(request):
+	headers = {
+		'Content-Type': 'application/json',
+		'Authorization': 'Bearer A101.OLQiCyqOpVwigKQQDu3CYlamZ1KTKQmhrbAZK85RIy4IiWh9d_up_lTadp_lfXdV.P3gvkY3PO28akjKYaDorm12QdfK',
+	}
+
+	data = { 
+		"sender_batch_header": {
+		"sender_batch_id": "Payouts_2020_100007",
+		"email_subject": "You have a payout!",
+		"email_message": "You have received a payout! Thanks for using our service!"
+		}, 
+		"items": [
+			{
+				"recipient_type": "EMAIL",
+				"amount": { "value": "9.87", "currency": "USD" },
+				"note": "Thanks for your patronage!",
+				"sender_item_id": "201403140001",
+				"receiver": "receiver@example.com",
+				"recipient_wallet": "RECIPIENT_SELECTED",
+				"notification_language": "en-US"
+			} 
+		] 
+	}
+
+	response = requests.post('https://api-m.sandbox.paypal.com/v1/payments/payouts', headers=headers, data=data)
+
 
 # def news(request):
 #     return render(request,"news.html")
