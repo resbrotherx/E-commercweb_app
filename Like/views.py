@@ -1079,10 +1079,26 @@ def shop(request):
 	const = {
 		'order':order,
 		"shops":shops,
-		"categorys":category,
+		"category":category,
 		"vendors_list":vendors_list,
 	}
 	return render(request,"shop.html",const)
+
+def shop_list(request):
+	if request.user.is_authenticated:
+		order = Order.objects.get(user=request.user, ordered=False)
+	else:
+		order = False
+	category = Main_Category.objects.all().order_by('-id')
+	shops = Item.objects.all().order_by('-timestamp')
+	vendors_list = BOUTIQUE_REQUEST.objects.filter(approved=True).order_by('-id')
+	const = {
+		'order':order,
+		"shops":shops,
+		"category":category,
+		"vendors_list":vendors_list,
+	}
+	return render(request,"shop-list.html",const)
 
 def sell_here(request):
 	return render(request,"sell_here.html")
@@ -1200,6 +1216,7 @@ def vendors(request):
 		order = False
 	vendors_list = BOUTIQUE_REQUEST.objects.filter(approved=True).order_by('-id')
 	vendors_count = BOUTIQUE_REQUEST.objects.filter(approved=True)
+	
 	# for i in vendors_count:
 	#     n = i.user
 	#     print(n.count())

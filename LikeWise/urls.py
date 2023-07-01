@@ -5,13 +5,17 @@ from django.conf.urls.static import static
 from django.conf import settings
 from users import views as view
 from .views import terms
-# from Like.views import index
 
+from django.shortcuts import redirect
+# from Like.views import index
+def coming_soon(request):
+    return redirect('/coming-soon/')
 
 name="register"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', coming_soon),
     path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path('', include('Like.urls')),
@@ -24,6 +28,9 @@ urlpatterns = [
     # path('<str:ref_code>/', index, name="index"),
     path('tinymce/', include('tinymce.urls')),
     path('paypal', include('paypal.standard.ipn.urls')),
+
+    
+    
 ]
 
 if settings.DEBUG:
