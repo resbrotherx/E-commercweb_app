@@ -1,15 +1,16 @@
 from django.contrib import admin
+from django.shortcuts import render
 from django.contrib.auth import views as auth_views
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
 from users import views as view
 from .views import terms
-
 from django.shortcuts import redirect
 # from Like.views import index
+
 def coming_soon(request):
-    return redirect('/coming-soon/')
+    return render(request, 'coming-soon.html')
 
 name="register"
 
