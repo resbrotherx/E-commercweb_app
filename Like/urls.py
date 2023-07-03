@@ -65,4 +65,9 @@ urlpatterns = [
     path('how-to-sell/', views.how_to_sell, name='how_to_sell'),
     path('terms/', views.terms, name='terms'),
     path('payout_list/', views.payout, name='payout'),
+
+
+    #coming soon url
+
+    path('subscribe/', views.subscribe, name='subscribe'),
 ]

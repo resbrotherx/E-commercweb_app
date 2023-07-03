@@ -8,6 +8,9 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
+# coming soon
+from .models import Subscriber
+#
 from django.utils import timezone
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from .models import *
@@ -1366,3 +1369,15 @@ def single_post(request, slug):
 
 def terms_view(request):
     return render(request, 'terms.html')
+
+
+
+#coming soon views
+
+
+def subscribe(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        Subscriber.objects.create(email=email)
+        return render(request, 'success.html')  # Render a success page after submission
+    return render(request, 'coming-soon.html')  # Render the same page for GET requests

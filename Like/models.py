@@ -418,3 +418,12 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return self.image.url
+
+
+
+
+class Subscriber(models.Model):
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return self.email

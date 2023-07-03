@@ -30,7 +30,9 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('paypal', include('paypal.standard.ipn.urls')),
 
-    
+    #coming soon url
+
+    path('subscribe/', view.Subscriber, name='subscribe'),
     
 ]
 

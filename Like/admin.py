@@ -4,6 +4,8 @@ from .models import BlogArticle
 
 from .models import *
 
+from .models import Subscriber
+
 admin.site.site_header = "Like Wise"
 admin.site.site_title = "Like Wise"
 admin.site.index_title = "Like Wise"
@@ -76,6 +78,8 @@ admin.site.register(BOUTIQUE_REQUEST)
 admin.site.register(counter)
 admin.site.register(Top_Brands)
 admin.site.register(PayoutUserList)
+#coming soon
+admin.site.register(Subscriber)
 
 
 class PostImageAdmin(admin.StackedInline):
@@ -99,3 +103,10 @@ class BlogArticleAdmin(admin.ModelAdmin):
     list_filter = ('category', 'author')
     search_fields = ('title', 'content', 'author')
     prepopulated_fields = {'slug': ('title',)}
+
+
+#coming soon page
+
+
+
+
