@@ -9,6 +9,9 @@ from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 from .utils import generate_ref_code
 
+from django.utils import timezone
+from django.utils.text import slugify
+
 
 # CATEGORY_CHOICES = (
 #     ('S', 'Shirt'),
@@ -82,11 +85,20 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+class Userinfo(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	country = models.CharField(max_length=500)
+	phone = models.CharField(max_length=500)
+	date = models.DateTimeField(auto_now=True)
+
+	def __str__(self):
+		return self.user.username
 
 # Create your models here.
 class Item(models.Model):
     title = models.CharField(max_length=100)
     preview_price = models.CharField(max_length=100,default="0.00")
+    draft =  models.BooleanField(default=True)
     price = models.FloatField()
     user = models.ForeignKey(to=profile, on_delete=models.CASCADE)
     # item_type = models.CharField(max_length=50, choices=(
@@ -341,3 +353,31 @@ class Top_Brands(models.Model):
 
     def __str__(self):
         return self.id
+
+
+class PayoutUserList(models.Model):
+    recipient_type = models.CharField(max_length=10, default="EMAIL")
+    note = models.CharField(max_length=200, default="Thanks for your patronage!")
+    sender_item_id = models.CharField(max_length=200, default="201403140001")
+    receiver = models.CharField(max_length=200, default="receiver@example.com")
+    recipient_wallet = models.CharField(max_length=200, default="RECIPIENT_SELECTED")
+    notification_language = models.CharField(max_length=200, default="en-US")
+
+    def __str__(self):
+        return self.receiver
+
+
+# model for blog
+
+class BlogArticle(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    image = models.ImageField(upload_to='blog/images')
+    category = models.CharField(max_length=100)
+    author = models.CharField(max_length=100)
+    publication_date = models.DateTimeField(default=timezone.now)
+    slug = models.SlugField(unique=True, max_length=200)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
