@@ -51,6 +51,7 @@ urlpatterns = [
     # path('news-details/', views.news_details, name="news_details"),
     path('vendor-Details/<int:pk>', views.VendorDetailView, name='vendors'),
     path('shop/', views.shop, name="shop"),
+    path('shop-list/', views.shop_list, name="shop-list"),
     path('dashboard_sells/', views.Dashboard_sells, name="Dashboard_sells"),
     path('draft_sells/', views.Dashboard_draft, name="Dashboard_draft"),
     path('payment-completed/', views.payment_completed_view, name="payment-completed"),
@@ -64,4 +65,9 @@ urlpatterns = [
     path('how-to-sell/', views.how_to_sell, name='how_to_sell'),
     path('terms/', views.terms, name='terms'),
     path('payout_list/', views.payout, name='payout'),
+
+
+    #coming soon url
+
+    path('subscribe/', views.subscribe, name='subscribe'),
 ]

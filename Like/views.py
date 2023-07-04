@@ -8,6 +8,9 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
+# coming soon
+from .models import Subscriber
+#
 from django.utils import timezone
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from .models import *
@@ -1079,10 +1082,26 @@ def shop(request):
 	const = {
 		'order':order,
 		"shops":shops,
-		"categorys":category,
+		"category":category,
 		"vendors_list":vendors_list,
 	}
 	return render(request,"shop.html",const)
+
+def shop_list(request):
+	if request.user.is_authenticated:
+		order = Order.objects.get(user=request.user, ordered=False)
+	else:
+		order = False
+	category = Main_Category.objects.all().order_by('-id')
+	shops = Item.objects.all().order_by('-timestamp')
+	vendors_list = BOUTIQUE_REQUEST.objects.filter(approved=True).order_by('-id')
+	const = {
+		'order':order,
+		"shops":shops,
+		"category":category,
+		"vendors_list":vendors_list,
+	}
+	return render(request,"shop-list.html",const)
 
 def sell_here(request):
 	return render(request,"sell_here.html")
@@ -1200,6 +1219,7 @@ def vendors(request):
 		order = False
 	vendors_list = BOUTIQUE_REQUEST.objects.filter(approved=True).order_by('-id')
 	vendors_count = BOUTIQUE_REQUEST.objects.filter(approved=True)
+	
 	# for i in vendors_count:
 	#     n = i.user
 	#     print(n.count())
@@ -1349,3 +1369,15 @@ def single_post(request, slug):
 
 def terms_view(request):
     return render(request, 'terms.html')
+
+
+
+#coming soon views
+
+
+def subscribe(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        Subscriber.objects.create(email=email)
+        return render(request, 'success.html')  # Render a success page after submission
+    return render(request, 'coming-soon.html')  # Render the same page for GET requests
