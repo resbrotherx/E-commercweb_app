@@ -1378,7 +1378,6 @@ def terms_view(request):
 
 
 
-@csrf_protect
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST.get('email')
