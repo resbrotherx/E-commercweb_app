@@ -11,6 +11,7 @@ from django.shortcuts import redirect
 # coming soon
 from .models import Subscriber
 #
+from django.views.decorators.csrf import csrf_protect
 from django.utils import timezone
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from .models import *
@@ -1377,7 +1378,7 @@ def terms_view(request):
 
 
 
-
+@csrf_protect
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST.get('email')
