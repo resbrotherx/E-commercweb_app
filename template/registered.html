@@ -23,11 +23,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- WebFont.js -->
 
-    <style>
-        .full-width-text {
-            width: 100%;
-        }
-    </style>
+
     <script>
         WebFontConfig = {
             google: { families: ['Poppins:400,500,600,700,800'] }
@@ -79,35 +75,27 @@
             <div class="page-content">
                 <div class="banner coming-soon-bg"
                     style="background-image: url(../../../www.portotheme.com/html/wolmart/assets/images/pages/coming/coming-soon.html); background-color: #333;">
-                    <div
-                        class="coming-content-wrapper d-flex align-items-center justify-content-center pl-sm-4 pr-sm-4">
-
+                    <div class="coming-content-wrapper d-flex align-items-center justify-content-center pl-sm-4 pr-sm-4">
                         <div class="coming-content">
                             <a href="demo1.html" class="logo">
                                 <img src="{% static 'assets/newlogo.png' %}" alt="Logo" width="168" height="53">
                             </a>
-                            <h2 class="coming-title ls-25">Launching <span>Soon...</span></h2>
-
-
-                            <h6 style="color: white; font-weight: 200; text-align:justify ;">TribeLike is a cultural,
-                                multi diverse, multi vendor market place that is taking
-                                fashion
-                                brands, boutiques and artists to the next level, and gives you the opportunity to
-                                buy
+                            <h2 class="coming-title ls-25">YOU ARE ALREADY<span>SUBSCRIBED...</span></h2>
+                            <div>
+                                <img src="{% static 'assets/comingsoon.png' %}" alt="Coming Soon"
+                                    class="img-responsive">
+                            </div>
+                            <!-- <p>TribeLike is a cultural, multi diverse, multi vendor market place that is taking fashion
+                                brands, boutiques and artists to the next level, and gives you the opportunity to buy
                                 and sell authentic clothing pieces and art from independent brands, boutiques and
-                                creatives. TribeLike is the bridge that connects the most important aspects of
-                                fashion,
-                                art and culture together. We are one community of different tribes and pride our
-                                selves
+                                creatives. TribeLike is the bridge that connects the most important aspects of fashion,
+                                art and culture together. We are one community of different tribes and pride our selves
                                 and our brands in authenticity within our ecosystem. The world of fashion, art and
-                                culture is very unique, as every brand and individual has their own vision, but with
-                                one
-                                mission driving everyone in our community, we can be truly be TRIBE LIKE.
-                            </h6>
-                            
+                                culture is very unique, as every brand and individual has their own vision, but with one
+                                mission driving everyone in our community, we can be truly be TRIBE LIKE.</p> -->
                             <!-- <div class="countdown countdown-coming" data-until="+10d" data-format="DHMS"
                                 data-relative="true">10:00:00</div> -->
-                            <div class="footer-newsletter bg-primary">
+                            <!-- <div class="footer-newsletter bg-primary">
                                 <div class="container">
                                     <div class="row justify-content-center align-items-center">
                                         <div class="col-xl-5 col-lg-6">
@@ -119,45 +107,35 @@
                                                     <h4
                                                         class="icon-box-title text-white text-uppercase font-weight-bold">
                                                         Get notified when we launch</h4>
-                                                    <!-- <p class="text-white">Get all the latest information on Events, Sales and Offers.
-                                                        </p> -->
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-7 col-lg-6 col-md-9 mt-4 mt-lg-0 ">
-                                            <!-- <form action="#" method="get"
+                                            <form action="#" method="get"
                                                 class="input-wrapper input-wrapper-inline input-wrapper-rounded">
-                                                <input type="email" class="form-control mr-2 bg-white" name="email"
-                                                    id="email" placeholder="Your E-mail Address" />
-                                                <button class="btn btn-dark btn-rounded" type="submit">Submit<i
-                                                        class="w-icon-long-arrow-right"></i></button>
-                                            </form> -->
-
-                                            <form action="{% url 'subscribe' %}" method="post"
-                                                class="input-wrapper input-wrapper-inline input-wrapper-rounded">
-                                                {% csrf_token %}
                                                 <input type="email" class="form-control mr-2 bg-white" name="email"
                                                     id="email" placeholder="Your E-mail Address" />
                                                 <button class="btn btn-dark btn-rounded" type="submit">Submit<i
                                                         class="w-icon-long-arrow-right"></i></button>
                                             </form>
 
+                                            <form action="{% url 'subscribe' %}" method="post" class="input-wrapper input-wrapper-inline input-wrapper-rounded">
+                                                {% csrf_token %}
+                                                <input type="email" class="form-control mr-2 bg-white" name="email" id="email" placeholder="Your E-mail Address" />
+                                                <button class="btn btn-dark btn-rounded" type="submit">Submit<i class="w-icon-long-arrow-right"></i></button>
+                                            </form>
+                                            
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <br>
-                            <div>
-                                <img src="{% static 'assets/comingsoon.png' %}" alt="Coming Soon"
-                                    class="img-responsive">
-                            </div>
-                            
+                            </div> -->
                             <div class="social-icons social-icons-colored">
-                                 <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
-                                <a href="https://twitter.com/tribelikeandco?s=11&t=Q7UIM-uatJItR3W0fA1n_w" class="social-icon social-twitter w-icon-twitter"></a> 
-                                <a href="https://instagram.com/tribe_like?igshid=MzRlODBiNWFlZA==" class="social-icon social-instagram w-icon-instagram"></a>
-                                <a href="#" class="social-icon social-youtube w-icon-youtube"></a>
-                                <a href="#" class="social-icon social-pinterest w-icon-pinterest"></a>
+                                <!-- <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
+                                <a href="#" class="social-icon social-twitter w-icon-twitter"></a> -->
+                                 <a href="https://instagram.com/tribe_like?igshid=MzRlODBiNWFlZA==" class="social-icon social-instagram w-icon-instagram"></a>
+                                <!-- <a href="#" class="social-icon social-youtube w-icon-youtube"></a>
+                                <a href="#" class="social-icon social-pinterest w-icon-pinterest"></a> -->
                             </div>
                             <p class="copyright mb-0">Copyright © 2023 Tribe Like - Marketplace. All Rights Reserved.
                             </p>
@@ -183,34 +161,34 @@
 
 
     <!-- Start of Quick View -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
-        }
-    </script>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
+    }
+</script>
 
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script src="{% static 'assets/vendor/sticky/sticky.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/photoswipe/photoswipe.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/photoswipe/photoswipe-ui-default.min.js' %}"></script>
-    <!-- Plugin JS File -->
-    <script data-cfasync="false"
-        src="{% static '../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/jquery.plugin/jquery.plugin.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/zoom/jquery.zoom.js' %}"></script>
-    <script src="{% static 'assets/vendor/jquery.countdown/jquery.countdown.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/skrollr/skrollr.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/jquery.count-to/jquery.count-to.min.js' %}"></script>
-    <!-- Swiper JS -->
-    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-    <script src='{% static "assets/highlight.pack.js" %}'></script>
-    <!-- Main JS -->
-    <script src="{% static 'assets/js/main.min.js' %}"></script>
-    <script>(function () { var js = "window['__CF$cv$params']={r:'7bc9d215fdb01c18',m:'gQHxX145Jsky89.M197LlVFOU5cUMyVWhaTq9aHebq0-1682291853-0-AZbL0Pr12rdKA5f/5UdEcyWaWyC12XDkqFNC6QqdqwEY',u:'/cdn-cgi/challenge-platform/h/g'};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='../../cdn-cgi/challenge-platform/h/g/scripts/jsd/70d5f7ce/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);"; var _0xh = document.createElement('iframe'); _0xh.height = 1; _0xh.width = 1; _0xh.style.position = 'absolute'; _0xh.style.top = 0; _0xh.style.left = 0; _0xh.style.border = 'none'; _0xh.style.visibility = 'hidden'; document.body.appendChild(_0xh); function handler() { var _0xi = _0xh.contentDocument || _0xh.contentWindow.document; if (_0xi) { var _0xj = _0xi.createElement('script'); _0xj.nonce = ''; _0xj.innerHTML = js; _0xi.getElementsByTagName('head')[0].appendChild(_0xj); } } if (document.readyState !== 'loading') { handler(); } else if (window.addEventListener) { document.addEventListener('DOMContentLoaded', handler); } else { var prev = document.onreadystatechange || function () { }; document.onreadystatechange = function (e) { prev(e); if (document.readyState !== 'loading') { document.onreadystatechange = prev; handler(); } }; } })();</script>
+<script type="text/javascript"
+    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="{% static 'assets/vendor/sticky/sticky.min.js' %}"></script>
+<script src="{% static 'assets/vendor/photoswipe/photoswipe.min.js' %}"></script>
+<script src="{% static 'assets/vendor/photoswipe/photoswipe-ui-default.min.js' %}"></script>
+<!-- Plugin JS File -->
+<script data-cfasync="false"
+    src="{% static '../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery.plugin/jquery.plugin.min.js' %}"></script>
+<script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/vendor/zoom/jquery.zoom.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery.countdown/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'assets/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'assets/vendor/skrollr/skrollr.min.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery.count-to/jquery.count-to.min.js' %}"></script>
+<!-- Swiper JS -->
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src='{% static "assets/highlight.pack.js" %}'></script>
+<!-- Main JS -->
+<script src="{% static 'assets/js/main.min.js' %}"></script>
+<script>(function () { var js = "window['__CF$cv$params']={r:'7bc9d215fdb01c18',m:'gQHxX145Jsky89.M197LlVFOU5cUMyVWhaTq9aHebq0-1682291853-0-AZbL0Pr12rdKA5f/5UdEcyWaWyC12XDkqFNC6QqdqwEY',u:'/cdn-cgi/challenge-platform/h/g'};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='../../cdn-cgi/challenge-platform/h/g/scripts/jsd/70d5f7ce/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);"; var _0xh = document.createElement('iframe'); _0xh.height = 1; _0xh.width = 1; _0xh.style.position = 'absolute'; _0xh.style.top = 0; _0xh.style.left = 0; _0xh.style.border = 'none'; _0xh.style.visibility = 'hidden'; document.body.appendChild(_0xh); function handler() { var _0xi = _0xh.contentDocument || _0xh.contentWindow.document; if (_0xi) { var _0xj = _0xi.createElement('script'); _0xj.nonce = ''; _0xj.innerHTML = js; _0xi.getElementsByTagName('head')[0].appendChild(_0xj); } } if (document.readyState !== 'loading') { handler(); } else if (window.addEventListener) { document.addEventListener('DOMContentLoaded', handler); } else { var prev = document.onreadystatechange || function () { }; document.onreadystatechange = function (e) { prev(e); if (document.readyState !== 'loading') { document.onreadystatechange = prev; handler(); } }; } })();</script>
 </body>
 
 
