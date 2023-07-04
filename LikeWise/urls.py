@@ -33,7 +33,7 @@ urlpatterns = [
     #coming soon url
 
     path('subscribe/', view.Subscriber, name='subscribe'),
-    
+    path('registered/', view.register, name='registered')
 ]
 
 if settings.DEBUG:

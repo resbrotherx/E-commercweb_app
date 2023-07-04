@@ -1375,9 +1375,19 @@ def terms_view(request):
 #coming soon views
 
 
+
+
+
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST.get('email')
-        Subscriber.objects.create(email=email)
+        try:
+            subscriber = Subscriber.objects.get(email=email)
+            return render(request, 'registered.html')  # Render the registered page
+        except ObjectDoesNotExist:
+            subscriber = Subscriber.objects.create(email=email)
         return render(request, 'success.html')  # Render a success page after submission
     return render(request, 'coming-soon.html')  # Render the same page for GET requests
+
+def registered(request):
+    return render(request, 'registered.html')

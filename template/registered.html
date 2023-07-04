@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Tribe Like - Marketplace</title>
+
+    <meta name="keywords" content="Marketplace ecommerce" />
+    <meta name="description" content="Tribe Like is powerful marketplace &amp; ecommerce.">
+    <meta name="author" content="Resbrotherx">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static '/assets/images/item_icon.jpeg' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- WebFont.js -->
+
+
+    <script>
+        WebFontConfig = {
+            google: { families: ['Poppins:400,500,600,700,800'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = '/static/assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+
+    <link href='{% static "assets/css/github.css" %}' rel="stylesheet">
+    <link rel="preload" href="{% static 'assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2' %}" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="{% static 'assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2' %}" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="{% static 'assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2' %}" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="{% static 'assets/fonts/wolmart87d5.woff?png09e' %}" as="font" type="font/woff"
+        crossorigin="anonymous">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/fontawesome-free/css/all.min.css' %}">
+
+    <!-- Plugins CSS -->
+    <!-- <link rel="stylesheet" href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/animate/animate.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/magnific-popup/magnific-popup.min.css' %}">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}">
+
+    <!-- Default CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/demo1.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/photoswipe/photoswipe.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'assets/vendor/photoswipe/default-skin/default-skin.min.css' %}">
+    <!-- Swiper CSS -->
+
+    <!-- Default CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.min.css' %}">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <h1 class="d-none">Tribe Like - Marketplace</h1>
+        <main class="main">
+            <div class="page-content">
+                <div class="banner coming-soon-bg"
+                    style="background-image: url(../../../www.portotheme.com/html/wolmart/assets/images/pages/coming/coming-soon.html); background-color: #333;">
+                    <div class="coming-content-wrapper d-flex align-items-center justify-content-center pl-sm-4 pr-sm-4">
+                        <div class="coming-content">
+                            <a href="demo1.html" class="logo">
+                                <img src="{% static 'assets/newlogo.png' %}" alt="Logo" width="168" height="53">
+                            </a>
+                            <h2 class="coming-title ls-25">YOU ARE ALREADY<span>SUBSCRIBED...</span></h2>
+                            <!-- <p>TribeLike is a cultural, multi diverse, multi vendor market place that is taking fashion
+                                brands, boutiques and artists to the next level, and gives you the opportunity to buy
+                                and sell authentic clothing pieces and art from independent brands, boutiques and
+                                creatives. TribeLike is the bridge that connects the most important aspects of fashion,
+                                art and culture together. We are one community of different tribes and pride our selves
+                                and our brands in authenticity within our ecosystem. The world of fashion, art and
+                                culture is very unique, as every brand and individual has their own vision, but with one
+                                mission driving everyone in our community, we can be truly be TRIBE LIKE.</p> -->
+                            <!-- <div class="countdown countdown-coming" data-until="+10d" data-format="DHMS"
+                                data-relative="true">10:00:00</div> -->
+                            <!-- <div class="footer-newsletter bg-primary">
+                                <div class="container">
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-xl-5 col-lg-6">
+                                            <div class="icon-box icon-box-side text-white">
+                                                <div class="icon-box-icon d-inline-flex">
+                                                    <i class="w-icon-envelop3"></i>
+                                                </div>
+                                                <div class="icon-box-content">
+                                                    <h4
+                                                        class="icon-box-title text-white text-uppercase font-weight-bold">
+                                                        Get notified when we launch</h4>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-7 col-lg-6 col-md-9 mt-4 mt-lg-0 ">
+                                            <form action="#" method="get"
+                                                class="input-wrapper input-wrapper-inline input-wrapper-rounded">
+                                                <input type="email" class="form-control mr-2 bg-white" name="email"
+                                                    id="email" placeholder="Your E-mail Address" />
+                                                <button class="btn btn-dark btn-rounded" type="submit">Submit<i
+                                                        class="w-icon-long-arrow-right"></i></button>
+                                            </form>
+
+                                            <form action="{% url 'subscribe' %}" method="post" class="input-wrapper input-wrapper-inline input-wrapper-rounded">
+                                                {% csrf_token %}
+                                                <input type="email" class="form-control mr-2 bg-white" name="email" id="email" placeholder="Your E-mail Address" />
+                                                <button class="btn btn-dark btn-rounded" type="submit">Submit<i class="w-icon-long-arrow-right"></i></button>
+                                            </form>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="social-icons social-icons-colored">
+                                <!-- <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
+                                <a href="#" class="social-icon social-twitter w-icon-twitter"></a> -->
+                                <!-- <a href="#" class="social-icon social-instagram w-icon-instagram"></a> -->
+                                <!-- <a href="#" class="social-icon social-youtube w-icon-youtube"></a>
+                                <a href="#" class="social-icon social-pinterest w-icon-pinterest"></a> -->
+                            </div>
+                            <p class="copyright mb-0">Copyright © 2023 Tribe Like - Marketplace. All Rights Reserved.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <a id="scroll-top" class="scroll-top" href="#top" title="Top" role="button"> <i class="w-icon-angle-up"></i> <svg
+            version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+            <circle id="progress-indicator" fill="transparent" stroke="#000000" stroke-miterlimit="10" cx="35" cy="35"
+                r="34" style="stroke-dasharray: 16.4198, 400;"></circle>
+        </svg> </a>
+
+    <!-- Plugin JS File -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/jquery.plugin/jquery.plugin.min.js"></script>
+    <script src="assets/vendor/jquery.countdown/jquery.countdown.min.js"></script>
+    <script src="assets/js/main.min.js"></script>
+    <script>(function () { var js = "window['__CF$cv$params']={r:'7bc9d2712ba10a4b',m:'ICx690crFlAdMyDGocKZ8Aq0M8EgXlF8SvXebpsPDDs-1682291868-0-AUUx0hOfbUYaMmRHzmtP1Hx8UfRLtaPfKFV73TsVHHrw',u:'/cdn-cgi/challenge-platform/h/g'};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='../../cdn-cgi/challenge-platform/h/g/scripts/jsd/70d5f7ce/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);"; var _0xh = document.createElement('iframe'); _0xh.height = 1; _0xh.width = 1; _0xh.style.position = 'absolute'; _0xh.style.top = 0; _0xh.style.left = 0; _0xh.style.border = 'none'; _0xh.style.visibility = 'hidden'; document.body.appendChild(_0xh); function handler() { var _0xi = _0xh.contentDocument || _0xh.contentWindow.document; if (_0xi) { var _0xj = _0xi.createElement('script'); _0xj.nonce = ''; _0xj.innerHTML = js; _0xi.getElementsByTagName('head')[0].appendChild(_0xj); } } if (document.readyState !== 'loading') { handler(); } else if (window.addEventListener) { document.addEventListener('DOMContentLoaded', handler); } else { var prev = document.onreadystatechange || function () { }; document.onreadystatechange = function (e) { prev(e); if (document.readyState !== 'loading') { document.onreadystatechange = prev; handler(); } }; } })();</script>
+
+
+    <!-- Start of Quick View -->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
+    }
+</script>
+
+<script type="text/javascript"
+    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="{% static 'assets/vendor/sticky/sticky.min.js' %}"></script>
+<script src="{% static 'assets/vendor/photoswipe/photoswipe.min.js' %}"></script>
+<script src="{% static 'assets/vendor/photoswipe/photoswipe-ui-default.min.js' %}"></script>
+<!-- Plugin JS File -->
+<script data-cfasync="false"
+    src="{% static '../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery.plugin/jquery.plugin.min.js' %}"></script>
+<script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/vendor/zoom/jquery.zoom.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery.countdown/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'assets/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'assets/vendor/skrollr/skrollr.min.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery.count-to/jquery.count-to.min.js' %}"></script>
+<!-- Swiper JS -->
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src='{% static "assets/highlight.pack.js" %}'></script>
+<!-- Main JS -->
+<script src="{% static 'assets/js/main.min.js' %}"></script>
+<script>(function () { var js = "window['__CF$cv$params']={r:'7bc9d215fdb01c18',m:'gQHxX145Jsky89.M197LlVFOU5cUMyVWhaTq9aHebq0-1682291853-0-AZbL0Pr12rdKA5f/5UdEcyWaWyC12XDkqFNC6QqdqwEY',u:'/cdn-cgi/challenge-platform/h/g'};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='../../cdn-cgi/challenge-platform/h/g/scripts/jsd/70d5f7ce/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);"; var _0xh = document.createElement('iframe'); _0xh.height = 1; _0xh.width = 1; _0xh.style.position = 'absolute'; _0xh.style.top = 0; _0xh.style.left = 0; _0xh.style.border = 'none'; _0xh.style.visibility = 'hidden'; document.body.appendChild(_0xh); function handler() { var _0xi = _0xh.contentDocument || _0xh.contentWindow.document; if (_0xi) { var _0xj = _0xi.createElement('script'); _0xj.nonce = ''; _0xj.innerHTML = js; _0xi.getElementsByTagName('head')[0].appendChild(_0xj); } } if (document.readyState !== 'loading') { handler(); } else if (window.addEventListener) { document.addEventListener('DOMContentLoaded', handler); } else { var prev = document.onreadystatechange || function () { }; document.onreadystatechange = function (e) { prev(e); if (document.readyState !== 'loading') { document.onreadystatechange = prev; handler(); } }; } })();</script>
+</body>
+
+
+
+<!-- Start of Scroll Top -->
+<a id="scroll-top" class="scroll-top" href="#top" title="Top" role="button"> <i class="w-icon-angle-up"></i> <svg
+        version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+        <circle id="progress-indicator" fill="transparent" stroke="#000000" stroke-miterlimit="10" cx="35" cy="35"
+            r="34" style="stroke-dasharray: 16.4198, 400;"></circle>
+    </svg> </a>
+<!-- End of Scroll Top -->
+
+
+
+
+</html>

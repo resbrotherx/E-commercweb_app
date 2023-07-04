@@ -70,4 +70,5 @@ urlpatterns = [
     #coming soon url
 
     path('subscribe/', views.subscribe, name='subscribe'),
+    path('registered/', views.registered, name='registered'),
 ]
