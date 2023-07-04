@@ -31,6 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['www.tribelikeworld.com','tribelikeworld.com','203.161.55.22']
 
+CSRF_TRUSTED_ORIGINS = ['https://*.tribelikeworld.com/','https://*.127.0.0.1']
 
 # Application definition
 

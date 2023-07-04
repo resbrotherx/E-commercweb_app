@@ -1377,7 +1377,6 @@ def terms_view(request):
 
 
 
-
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST.get('email')
