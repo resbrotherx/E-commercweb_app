@@ -29,12 +29,15 @@ SECRET_KEY = 'django-insecure-@x$e$0h_x_e2ydn39fxlo35z4h3@^v^x@#y1pd&cy4+!!7wx7x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['www.tribelikeworld.com','tribelikeworld.com','203.161.55.22']
+=======
+ALLOWED_HOSTS = ['tribelikeworld.com', '*.tribelikeworld.com']
+>>>>>>> 8fca379526bd36210317f8b6a8b8ad42bc8d3d4f
 
 CSRF_TRUSTED_ORIGINS = ['https://*.tribelikeworld.com/','https://*.127.0.0.1']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
