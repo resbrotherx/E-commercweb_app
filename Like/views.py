@@ -10,7 +10,6 @@ from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
 # coming soon
 from .models import Subscriber
-#
 from django.utils import timezone
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from .models import *
@@ -1377,16 +1376,40 @@ def terms_view(request):
 
 
 
+# def subscribe(request):
+#     if request.method == 'POST':
+#         email = request.POST.get('email')
+#         try:
+#             subscriber = Subscriber.objects.get(email=email)
+#             return render(request, 'registered.html')  # Render the registered page
+#         except ObjectDoesNotExist:
+#             subscriber = Subscriber.objects.create(email=email)
+#         return render(request, 'success.html')  # Render a success page after submission
+#     return render(request, 'coming-soon.html')  # Render the same page for GET requests
+
+# def registered(request):
+#     return render(request, 'registered.html')
+
+def registered(request):
+     return render(request, 'registered.html')
+
+
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST.get('email')
-        try:
-            subscriber = Subscriber.objects.get(email=email)
-            return render(request, 'registered.html')  # Render the registered page
-        except ObjectDoesNotExist:
-            subscriber = Subscriber.objects.create(email=email)
-        return render(request, 'success.html')  # Render a success page after submission
+        data = {
+            'email': email
+        }
+        message = f"New message:\n\nFrom: {data['email']}"
+
+        send_mail(
+            'New message from the form',
+            message,
+            email,  # Sender's email address
+            ['artistictems@gmail.com'],  # Recipient's email address
+            fail_silently=False,
+        )
+        
+        print(data)
     return render(request, 'coming-soon.html')  # Render the same page for GET requests
 
-def registered(request):
-    return render(request, 'registered.html')

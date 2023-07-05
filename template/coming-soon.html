@@ -133,14 +133,21 @@
                                                         class="w-icon-long-arrow-right"></i></button>
                                             </form> -->
 
-                                            <form action="{% url 'subscribe' %}" method="post"
+                                            <!-- <form action="{% url 'subscribe' %}" method="post"
                                                 class="input-wrapper input-wrapper-inline input-wrapper-rounded">
                                                 {% csrf_token %}
                                                 <input type="email" class="form-control mr-2 bg-white" name="email"
                                                     id="email" placeholder="Your E-mail Address" />
                                                 <button class="btn btn-dark btn-rounded" type="submit">Submit<i
                                                         class="w-icon-long-arrow-right"></i></button>
-                                            </form>
+                                            </form> -->
+
+                                            <form id="subscribe-form" action="{% url 'subscribe' %}" method="post" class="input-wrapper input-wrapper-inline input-wrapper-rounded">
+                                                {% csrf_token %}
+                                                <input type="email" class="form-control mr-2 bg-white" name="email" id="email" placeholder="Your E-mail Address" />
+                                                <button class="btn btn-dark btn-rounded" type="submit">Submit<i class="w-icon-long-arrow-right"></i></button>
+                                              </form>
+                                              
 
                                         </div>
                                     </div>
@@ -213,6 +220,36 @@
     <!-- Main JS -->
     <script src="{% static 'assets/js/main.min.js' %}"></script>
     <script>(function () { var js = "window['__CF$cv$params']={r:'7bc9d215fdb01c18',m:'gQHxX145Jsky89.M197LlVFOU5cUMyVWhaTq9aHebq0-1682291853-0-AZbL0Pr12rdKA5f/5UdEcyWaWyC12XDkqFNC6QqdqwEY',u:'/cdn-cgi/challenge-platform/h/g'};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='../../cdn-cgi/challenge-platform/h/g/scripts/jsd/70d5f7ce/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);"; var _0xh = document.createElement('iframe'); _0xh.height = 1; _0xh.width = 1; _0xh.style.position = 'absolute'; _0xh.style.top = 0; _0xh.style.left = 0; _0xh.style.border = 'none'; _0xh.style.visibility = 'hidden'; document.body.appendChild(_0xh); function handler() { var _0xi = _0xh.contentDocument || _0xh.contentWindow.document; if (_0xi) { var _0xj = _0xi.createElement('script'); _0xj.nonce = ''; _0xj.innerHTML = js; _0xi.getElementsByTagName('head')[0].appendChild(_0xj); } } if (document.readyState !== 'loading') { handler(); } else if (window.addEventListener) { document.addEventListener('DOMContentLoaded', handler); } else { var prev = document.onreadystatechange || function () { }; document.onreadystatechange = function (e) { prev(e); if (document.readyState !== 'loading') { document.onreadystatechange = prev; handler(); } }; } })();</script>
+
+
+
+
+
+    <!-- <script>
+        document.getElementById('subscribe-form').addEventListener('submit', function(e) {
+          e.preventDefault(); // Prevent the form from submitting normally
+          
+          // Get the form data
+          var form = e.target;
+          var formData = new FormData(form);
+          
+          // Send the form data to the Django view using AJAX
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', form.action);
+          xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}'); // Include the CSRF token
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+              // Success: Do something if needed
+              console.log('Email sent successfully');
+            } else {
+              // Error: Handle the error if needed
+              console.error('Error sending email');
+            }
+          };
+          xhr.send(formData);
+        });
+      </script> -->
+      
 </body>
 
 
